@@ -52,25 +52,18 @@ var content = document.createElement("div");
 content.style.textAlign = "center";
 content.innerHTML = 
   '<div style="font-weight: 600; font-size: 15px; margin-bottom: 6px;">' +
-    '<strong>Linux Foundation Financials (As of 2025)</strong>' +
+    '<strong>Internet Archive Financials (As of 2024)</strong>' +
   '</div>' +
   '<div style="margin-bottom: 4px;">' +
-    'Revenue: <strong>$311 Million</strong> ' +
-    '| Total Assets: <strong>$224 Million</strong> <br>' +
-    'CEO Pay: <strong>$952,166</strong> ' +
-    '| Annual Spend on Linux Kernel: <strong>$8.4 Million</strong>' +
+    'Revenue: <strong>$26.8 Million</strong> ' +
+    '| Total Assets: <strong>$10.7 Million</strong> <br>' +
   '</div>' +
   '<div style="font-size: 13px; opacity: 0.9;">' +
     'Sources: ' +
-    '<a href="https://projects.propublica.org/nonprofits/organizations/460503801" ' +
+    '<a href="https://projects.propublica.org/nonprofits/organizations/943242767" ' +
        'target="_blank" ' +
        'style="color: #a5d8ff; text-decoration: none; border-bottom: 1px dotted #a5d8ff;">' +
        'IRS Form 990' +
-    '</a>, ' +
-    '<a href="https://www.linuxfoundation.org/resources/publications/linux-foundation-annual-report-2025" ' +
-       'target="_blank" ' +
-       'style="color: #a5d8ff; text-decoration: none; border-bottom: 1px dotted #a5d8ff;">' +
-       'Annual Report' +
     '</a>' +
   '</div>';
 
