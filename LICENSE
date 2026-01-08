@@ -1,3 +1,24 @@
+
+Wikipedia-Donation-Remover
+--------------------------
+All new contributions Copyright (c) 2026 firebadnofire
+Licensed under the GNU General Public License, Version 3.0.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+See LICENSE.gpl for more info
+
+---
+
+This project incorporates code from "Wikipedia-Donation-Destroyer" 
+Copyright (c) 2026, Bryan Lunduke.
+Below is the original, unaltered text of the LICENSE file
+
+--- ORIGINAL LICENSE TEXT
+
 BSD 2-Clause License
 
 Copyright (c) 2026, Bryan Lunduke
