@@ -6,6 +6,10 @@ This code is forked from [Wikipedia-Donation-Destroyer](https://github.com/Bryan
 
 This project also removes undocumented behavior from the original project, as they intend to sway users donation behavior based on non-merit based information.
 
+![Before](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/Before.png)
+![After](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/After.png)
+
+
 ## Philosophy
 
 This project thinks both donation banners and revene statements are not good reasons to donate or not donate to any given project or service. Instead, users should donate based on the merit and utility of the project/service they intend to make a decision about.
