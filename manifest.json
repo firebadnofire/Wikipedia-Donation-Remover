@@ -1,17 +1,21 @@
 {
   "name": "Wikipedia Donation Remover",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Replaces the Wikipedia donation banner with a simple message.",
   "manifest_version": 3,
   "permissions": [
     "activeTab"
   ],
   "host_permissions": [
-    "https://*.wikipedia.org/*"
+    "https://*.wikipedia.org/*",
+    "https://web.archive.org/web/*/https://*.wikipedia.org/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://*.wikipedia.org/*"],
+      "matches": [
+        "https://*.wikipedia.org/*",
+        "https://web.archive.org/web/*/https://*.wikipedia.org/*"
+      ],
       "js": ["wdd_wikipedia.js"],
       "all_frames": true
     }
