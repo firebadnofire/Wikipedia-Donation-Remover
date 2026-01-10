@@ -6,6 +6,15 @@
   "permissions": [
     "activeTab"
   ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "wikipedia-donation-remover@example.com",
+      "data_collection_permissions": {
+        "permissions": [],
+        "consent_notice": "This extension does not collect or transmit data."
+      }
+    }
+  },
   "host_permissions": [
     "https://*.wikipedia.org/*",
     "https://web.archive.org/web/*/https://*.wikipedia.org/*"
