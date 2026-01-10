@@ -2,10 +2,69 @@
 (function () {
   var bannerMessage = "Happy reading!";
 
-  function applyBannerTheme(banner, isDarkMode) {
-    var backgroundColor = isDarkMode ? "#202122" : "#f8f9fa";
-    var textColor = isDarkMode ? "#f8f9fa" : "#202122";
-    var borderColor = isDarkMode ? "#54595d" : "#a2a9b1";
+  function getRelativeLuminance(red, green, blue) {
+    var transform = function (value) {
+      var channel = value / 255;
+      return channel <= 0.03928
+        ? channel / 12.92
+        : Math.pow((channel + 0.055) / 1.055, 2.4);
+    };
+
+    return (
+      0.2126 * transform(red) +
+      0.7152 * transform(green) +
+      0.0722 * transform(blue)
+    );
+  }
+
+  function parseRgbChannels(color) {
+    if (!color || color === "transparent") {
+      return null;
+    }
+
+    var match = color.match(/rgba?\(([^)]+)\)/);
+    if (!match) {
+      return null;
+    }
+
+    var parts = match[1].split(",").map(function (value) {
+      return parseFloat(value.trim());
+    });
+
+    if (parts.length < 3 || parts.some(function (value) {
+      return Number.isNaN(value);
+    })) {
+      return null;
+    }
+
+    return parts.slice(0, 3);
+  }
+
+  function isPageDarkMode() {
+    var htmlStyle = window.getComputedStyle(document.documentElement);
+    var bodyStyle = document.body ? window.getComputedStyle(document.body) : null;
+    var color = htmlStyle.backgroundColor;
+
+    if (
+      bodyStyle &&
+      (color === "transparent" || color === "rgba(0, 0, 0, 0)")
+    ) {
+      color = bodyStyle.backgroundColor;
+    }
+
+    var channels = parseRgbChannels(color);
+    if (!channels) {
+      return false;
+    }
+
+    return getRelativeLuminance(channels[0], channels[1], channels[2]) < 0.4;
+  }
+
+  function applyBannerTheme(banner, prefersDarkMode) {
+    var useDarkMode = prefersDarkMode && isPageDarkMode();
+    var backgroundColor = useDarkMode ? "#202122" : "#f8f9fa";
+    var textColor = useDarkMode ? "#f8f9fa" : "#202122";
+    var borderColor = useDarkMode ? "#54595d" : "#a2a9b1";
 
     Object.assign(banner.style, {
       backgroundColor: backgroundColor,
