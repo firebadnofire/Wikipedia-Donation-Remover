@@ -10,6 +10,10 @@ This project also removes undocumented behavior from the original project, as th
 
 This project thinks both donation banners and revene statements are not good reasons to donate or not donate to any given project or service. Instead, users should donate based on the merit and utility of the project/service they intend to make a decision about.
 
+## Download
+
+This extension is made avalible on [addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/wikipedia-donation-remover/) with Chrome Webstore support coming later. Both Chrome and Firefox are supported by the code.
+
 ## License
 
 This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. See `LICENSE.gpl` for more info.
