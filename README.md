@@ -6,9 +6,17 @@ This code is forked from [Wikipedia-Donation-Destroyer](https://github.com/Bryan
 
 This project also removes undocumented behavior from the original project, as they intend to sway users donation behavior based on non-merit based information.
 
-![Before](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/Before.png)
-![After](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/After.png)
+<details>
+<summary>(image) Wikipedia before this extension:</summary>
 
+![Before](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/Before.png)
+</details>
+
+<details>
+<summary>(image) Wikipedia after this extension</summary>
+
+![After](https://pubcode.archuser.org/firebadnofire/Wikipedia-Donation-Remover/raw/branch/bob/After.png)
+</details>
 
 ## Philosophy
 
