@@ -1,52 +1,18 @@
 {
-  "name": "Wikipedia Donation Destroyer",
+  "name": "Wikipedia Donation Remover",
   "version": "1.2",
-  "description": "Removes the Wikipedia donation popup, replacing it with actual financials.",
+  "description": "Replaces the Wikipedia donation banner with a simple message.",
   "manifest_version": 3,
   "permissions": [
     "activeTab"
   ],
   "host_permissions": [
-    "https://*.wikipedia.org/*",
-    "https://*.torproject.org/*",
-    "https://*.archive.org/*",
-    "https://*.python.org/*",
-    "https://*.linuxfoundation.org/*",
-    "https://*.mozilla.org/*",
-    "https://*.mozilla.com/*"
+    "https://*.wikipedia.org/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://*.linuxfoundation.org/*"],
-      "js": ["wdd_linuxfoundation.js"],
-      "all_frames": true
-    },
-    {
-      "matches": ["https://*.archive.org/*"],
-      "js": ["wdd_internetarchive.js"],
-      "all_frames": true
-    },
-    {
-      "matches": ["https://*.python.org/*"],
-      "js": ["wdd_python.js"],
-      "all_frames": true
-    },
-    {
-      "matches": ["https://*.torproject.org/*"],
-      "js": ["wdd_tor.js"],
-      "all_frames": true
-    },
-    {
       "matches": ["https://*.wikipedia.org/*"],
       "js": ["wdd_wikipedia.js"],
-      "all_frames": true
-    },
-    {
-      "matches": [
-        "https://*.mozilla.org/*",
-        "https://*.mozilla.com/*"
-      ],
-      "js": ["wdd_mozilla.js"],
       "all_frames": true
     }
   ]
