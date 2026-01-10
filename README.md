@@ -4,6 +4,12 @@ The purpose of this fork is to remove all ideological swaying in either directio
 
 This code is forked from [Wikipedia-Donation-Destroyer](https://github.com/BryanLunduke/Wikipedia-Donation-Destroyer) by `BryanLunduke`.
 
+This project also removes undocumented behavior from the original project, as they intend to sway users donation behavior based on non-merit based information.
+
+## Philosophy
+
+This project thinks both donation banners and revene statements are not good reasons to donate or not donate to any given project or service. Instead, users should donate based on the merit and utility of the project/service they intend to make a decision about.
+
 ## License
 
 This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. See `LICENSE.gpl` for more info.
