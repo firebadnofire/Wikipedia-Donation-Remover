@@ -1,6 +1,21 @@
-// Replace Wikipedia donation banners with a simple message
 (function () {
   var bannerMessage = "Happy reading!";
+  var bannerId = "wdd-happy-reading";
+  var removalSelectors = [
+    "div#siteNotice",
+    "div#centralNotice",
+    "div#frb-inline",
+    "div#frb-modal",
+    "div#frb-panes",
+    "div#fundraising-overlay",
+    "div#fundraising-banner",
+    "div.fundraising-banner",
+    "div.cn-fundraising",
+    "div[role='dialog'][aria-label*='donate']",
+    "div[role='dialog'][aria-label*='Donate']",
+    "li#pt-sitesupport-2",
+    "a[href^='https://donate.wikimedia.org/']",
+  ];
 
   function getRelativeLuminance(red, green, blue) {
     var transform = function (value) {
@@ -31,9 +46,12 @@
       return parseFloat(value.trim());
     });
 
-    if (parts.length < 3 || parts.some(function (value) {
-      return Number.isNaN(value);
-    })) {
+    if (
+      parts.length < 3 ||
+      parts.some(function (value) {
+        return Number.isNaN(value);
+      })
+    ) {
       return null;
     }
 
@@ -75,7 +93,7 @@
 
   function buildBanner() {
     var banner = document.createElement("div");
-    banner.id = "wdd-happy-reading";
+    banner.id = bannerId;
     banner.textContent = bannerMessage;
     Object.assign(banner.style, {
       borderRadius: "2px",
@@ -105,27 +123,55 @@
     return banner;
   }
 
-  function replaceBanner(target) {
-    var banner = buildBanner();
-    target.innerHTML = "";
-    target.appendChild(banner);
+  function removeMatches(root) {
+    removalSelectors.forEach(function (selector) {
+      var matches = root.querySelectorAll(selector);
+      matches.forEach(function (node) {
+        node.remove();
+      });
+    });
   }
 
-  var siteNotice = document.querySelector("div#siteNotice");
-  if (siteNotice) {
-    replaceBanner(siteNotice);
-    return;
+  function cleanupBannerArtifacts() {
+    removeMatches(document);
   }
 
-  var fallbackBanner = document.querySelector("div#frb-inline");
-  if (fallbackBanner) {
-    replaceBanner(fallbackBanner);
-    return;
-  }
+  function insertHappyReadingBanner() {
+    if (document.getElementById(bannerId)) {
+      return;
+    }
 
-  var content = document.querySelector("div#mw-content-text") || document.body;
-  if (content) {
+    var content =
+      document.querySelector("div#mw-content-text") || document.body;
+    if (!content) {
+      return;
+    }
+
     var banner = buildBanner();
     content.insertBefore(banner, content.firstChild);
   }
+
+  cleanupBannerArtifacts();
+  insertHappyReadingBanner();
+
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      mutation.addedNodes.forEach(function (node) {
+        if (node.nodeType !== Node.ELEMENT_NODE) {
+          return;
+        }
+        removeMatches(node);
+        if (removalSelectors.some(function (selector) {
+          return node.matches && node.matches(selector);
+        })) {
+          node.remove();
+        }
+      });
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
 })();
