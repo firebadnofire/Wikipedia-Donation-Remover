@@ -12,7 +12,7 @@
       "data_collection_permissions": {
         "permissions": [],
         "consent_notice": "This extension does not collect or transmit data.",
-        "required": false
+        "required": []
       }
     }
   },
