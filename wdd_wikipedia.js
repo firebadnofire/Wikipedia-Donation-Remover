@@ -78,8 +78,8 @@
     return getRelativeLuminance(channels[0], channels[1], channels[2]) < 0.4;
   }
 
-  function applyBannerTheme(banner, prefersDarkMode) {
-    var useDarkMode = prefersDarkMode && isPageDarkMode();
+  function applyBannerTheme(banner) {
+    var useDarkMode = isPageDarkMode();
     var backgroundColor = useDarkMode ? "#202122" : "#f8f9fa";
     var textColor = useDarkMode ? "#f8f9fa" : "#202122";
     var borderColor = useDarkMode ? "#54595d" : "#a2a9b1";
@@ -107,17 +107,39 @@
     var mediaQuery = window.matchMedia
       ? window.matchMedia("(prefers-color-scheme: dark)")
       : null;
-    applyBannerTheme(banner, mediaQuery ? mediaQuery.matches : false);
+    applyBannerTheme(banner);
 
     if (mediaQuery) {
       var onThemeChange = function (event) {
-        applyBannerTheme(banner, event.matches);
+        applyBannerTheme(banner);
       };
       if (mediaQuery.addEventListener) {
         mediaQuery.addEventListener("change", onThemeChange);
       } else if (mediaQuery.addListener) {
         mediaQuery.addListener(onThemeChange);
       }
+    }
+
+    var themeObserver = new MutationObserver(function () {
+      applyBannerTheme(banner);
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: [
+        "class",
+        "style",
+        "data-mw-page-theme",
+        "data-theme",
+        "data-color",
+      ],
+    });
+
+    if (document.body) {
+      themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["class", "style", "data-mw-page-theme"],
+      });
     }
 
     return banner;
